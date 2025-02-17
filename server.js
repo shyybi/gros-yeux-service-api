@@ -36,6 +36,10 @@ app.get('/api/disk-usage', async (req, res) => {
     res.json(disks);
 });
 
+app.get('/api/status', (req, res) => {
+	res.send('online');
+});
+
 app.get('/api/network-usage', async (req, res) => {
     const network = await si.networkStats();
     network.forEach(net => net.timestamp = new Date());
