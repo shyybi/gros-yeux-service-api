@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last User Info</title>
+    <script>
+        async function fetchLastUser() {
+            try {
+                const response = await fetch('/api/last-user');
+                const data = await response.json();
+                document.getElementById('user-info').innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error fetching last user info:', error);
+            }
+        }
+
+        setInterval(fetchLastUser, 5000);
+        window.onload = fetchLastUser;
+    </script>
+</head>
+<body>
+    <h1>Last User Info</h1>
+    <pre id="user-info">Loading...</pre>
+</body>
+</html>
